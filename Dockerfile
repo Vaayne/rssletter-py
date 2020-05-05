@@ -1,0 +1,11 @@
+FROM python:3
+
+COPY ./requirements.txt /tmp/requirements.txt
+
+RUN pip install -r /tmp/requirements.txt
+
+COPY . /app
+
+WORKDIR /app
+
+CMD [ "uvicorn", "src.app:app", "--reload", "--host", "0.0.0.0"]
